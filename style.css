@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    /* outline: 1px solid red; */
+    list-style: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    background-color:rgb(40, 39, 39);
+}
+
+/* Footer code below */
+.footer{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.fa-github {
+    color: rgb(247, 126, 12);
+    font-size: 44px;
+    transition: transform 0.3s ease-in-out;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.5);
+}
