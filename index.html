@@ -13,8 +13,11 @@
 <body>
     <div class="mainContainer">
         <div class="header">
-            <img src="./imgs/logo.svg" style="width:70px; height:70px">
-            <div class="title">Library 2.0</div>
+            <div class="leftSide">
+                <img src="./imgs/logo.svg" style="width:70px; height:70px">
+                <div class="title">Library 2.0</div>
+            </div>
+            <div class="addBook">+ Add a new book</div>
         </div>
         <div class="main">
             <table id="booksTable">
@@ -35,21 +38,15 @@
                     </tr>
                 </tbody>
             </table>
-
-            <form>
-                <input type="text" name="title" id="title" autocomplete="off" required>
-                <input type="text" name="author" id="author" autocomplete="off" required>
-                <input type="number" name="pages" id="pages" required>
-                <button type="button" id="save">Save</button>
-            </form>
-            <div class="booksDisplayTable">
-                <div class="cardBook">
-                    <div class="title"></div>
-                    <div class="author"></div>
-                    <div class="pages"></div>
-                </div>
-            </div>
         </div>
+
+        <form>
+            <input type="text" name="title" id="title" autocomplete="off" required>
+            <input type="text" name="author" id="author" autocomplete="off" required>
+            <input type="number" name="pages" id="pages" required>
+            <button type="button" id="save">Save</button>
+        </form>
+
     </div>
     <div class="footer">
         &copy Hugo Marinho 2022      

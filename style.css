@@ -27,31 +27,47 @@ body{
     height: 80px;
     background-color: var(--yellow);
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 4rem;
     font-family: 'Hurricane', cursive, sans-serif;
     text-shadow: 2px 2px var(--green);
     padding: 10px;
     box-shadow: 0 5px 5px var(--yellow);
+    user-select: none;
+}
+
+.header .leftSide{
+    display: flex;
+    align-items: center;
+}
+
+.header .addBook{
+    font-size: 2.2rem;
+    padding: 10px;
+    border: 2px solid var(--green);
+    user-select: none;
+}
+
+.header .addBook:hover{
+    cursor: pointer;
+    background-color: var(--green);
+    text-shadow: 2px 2px var(--yellow);
+
 }
 
 /* Main code below */
 .main{
     margin: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 table, th, td {
-
     padding: 10px;
-    
-  }
-
-  table{
-
-
+    text-align: center;
   }
   
   th{
@@ -61,8 +77,16 @@ table, th, td {
       font-weight: 900;
       font-family: 'Hurricane', cursive, sans-serif;
       text-shadow: 1px 1px var(--green);
-   
+      width: 50rem;
+      height: 5rem;
+      font-size: 2.5rem;
+  }
 
+  td{
+      font-size: 2rem;
+      max-width: 300px;
+      word-wrap: break-word;
+      background-color: var(--green);
   }
 
 input{
@@ -76,7 +100,7 @@ input{
     background-color: var(--green);
     color: white;
     padding: 10px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     right: 0;
     left: 0;
@@ -96,4 +120,45 @@ input{
 
 .fa-github:hover {
     transform: rotate(360deg) scale(1.5);
+}
+
+
+@media screen and (max-width: 860px){
+    .header{
+        font-size: 2.5rem;
+    }
+
+    .header .addBook{
+        font-size: 1.5rem;
+    }
+
+    th{
+        width: 5rem;
+        height: 1rem;
+        font-size: 2rem;
+    }
+
+    td{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .header{
+        font-size: 2rem;
+    }
+
+    .header .addBook{
+        font-size: 1.5rem;
+    }
+
+    th{
+        width: 1rem;
+        height: 0.5rem;
+        font-size: 1.3rem;
+    }
+
+    td{
+        font-size: 1rem;
+    }
 }
