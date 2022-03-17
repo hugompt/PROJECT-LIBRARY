@@ -15,16 +15,22 @@ function Book (title, author, pages){
 
 
 //Function to add a new book into the user's library
+//and respective table to display the books
 function addBookToLibrary(book){
     let tbodyRef = document.getElementById('booksTable').getElementsByTagName('tbody')[0];
     let newRow = tbodyRef.insertRow();
+    
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'car';
+    checkbox.name = 'interest';
+    checkbox.value = 'car';
+
     newRow.insertCell().appendChild(document.createTextNode(book.title));
     newRow.insertCell().appendChild(document.createTextNode(book.author));
     newRow.insertCell().appendChild(document.createTextNode(book.pages));
-
-    book.printBook();
+    newRow.insertCell().appendChild(checkbox);
     myLibrary.push(book);
-    console.log(myLibrary);
 }
 
 
