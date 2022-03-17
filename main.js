@@ -21,11 +21,25 @@ function addBookToLibrary(book){
     console.log(myLibrary);
 }
 
-
+//Listen in for click on the save button and call function
+//to add the new book onto the user's library
 saveBtn.addEventListener('click', function(){
     let newTitle = document.getElementById('title').value;
     let newAuthor = document.getElementById('author').value;
     let newPages = document.getElementById('pages').value;
     let newBook = new Book(newTitle, newAuthor, newPages)
-    addBookToLibrary(newBook);
+
+    //Check if string is just empty spaces before adding
+    if(newTitle.trim() != "" && newAuthor.trim() != "" && newPages.trim() != ""){
+        //Check if a book with the same title and author already exists before adding
+        if(myLibrary.some(x => x.title === newTitle.trim() && x.author === newAuthor.trim())){
+            alert("Book already exists, no need to add it again.");
+        }
+        else{
+            addBookToLibrary(newBook);
+        }
+    }
+    else{
+        alert("Please enter a valid input...")
+    }
 });
