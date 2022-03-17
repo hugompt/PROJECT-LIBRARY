@@ -40,13 +40,53 @@
             </table>
         </div>
 
-        <form>
-            <input type="text" name="title" id="title" autocomplete="off" required>
-            <input type="text" name="author" id="author" autocomplete="off" required>
-            <input type="number" name="pages" id="pages" required>
-            <button type="button" id="save">Save</button>
-        </form>
-
+        <div id="modal">
+            <form id="modal-content">
+                <div class="topPart">
+                    <div class="modalTitle">ADD A NEW BOOK</div>
+                    <span class="close">×</span>    
+                </div>
+                <div class="auxCont">
+                    <div class="input-block">
+                        <input id="title" type="text" name="title" autocomplete="off" required="">
+                        <span class="placeholder">Title of the book? (*)</span>
+                        <div class="validation-block">
+                            <p class="validation-text title">Please fill out this field.</p>
+                        </div>
+                    </div>
+            
+                    <div class="input-block">
+                        <input id="name" type="text" name="name" autocomplete="off" required="">
+                        <span class="placeholder">Author of the book? (*)</span>
+                        <div class="validation-block">
+                            <p class="validation-text name">Please fill out this field.</p>
+                        </div>
+                    </div>
+            
+                    <div class="input-block">
+                        <input id="number" type="number" name="number" autocomplete="off" required="">
+                        <span class="placeholder">Number of pages (*)</span>
+                        <div class="validation-block">
+                            <p class="validation-text number">Please enter a number bigger than 0.</p>
+                        </div>
+                    </div>
+            
+                    <label class="checkbox">
+                    <span class="checkbox-input">
+                        <input type="checkbox" name="checkbox" autocomplete="off">
+                        <span class="checkbox-control">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path fill="none" stroke="currentColor" stroke-width="3" d="M1.73 12.91l6.37 6.37L22.79 4.59"></path></svg>
+                        </span>
+                    </span>
+                    <span class="checkbox-label">I have already read this book!</span>
+                    </label>
+                    <br>
+                    <div class="req">(*) - required fields</div>
+                    <input type="button" value="SAVE" id="add-book">
+                </div>
+            </form>
+        </div>
     </div>
     <div class="footer">
         &copy Hugo Marinho 2022      

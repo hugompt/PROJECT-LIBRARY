@@ -1,6 +1,9 @@
 //Global variables
 let myLibrary = [];
-let saveBtn = document.querySelector('#save');
+let saveBtn = document.querySelector('#add-book');
+let modal = document.getElementById('modal');
+let addBookBtn = document.querySelector('.addBook');
+let span = document.getElementsByClassName('close')[0];
 
 //Object Constructor for a Book
 function Book (title, author, pages){
@@ -38,8 +41,8 @@ function addBookToLibrary(book){
 //to add the new book onto the user's library
 saveBtn.addEventListener('click', function(){
     let newTitle = document.getElementById('title').value;
-    let newAuthor = document.getElementById('author').value;
-    let newPages = document.getElementById('pages').value;
+    let newAuthor = document.getElementById('name').value;
+    let newPages = document.getElementById('number').value;
     let newBook = new Book(newTitle, newAuthor, newPages)
 
     //Check if string is just empty spaces before adding
@@ -51,8 +54,10 @@ saveBtn.addEventListener('click', function(){
         else{
             //Add the new book
             addBookToLibrary(newBook);
+            document.getElementById("modal-content").reset();
             //Show the new added book
             displayBooks();
+            modal.style.display = "none";
         }
     }
     else{
@@ -71,3 +76,23 @@ function displayBooks(){
 
 //When the page loads, display current books
 document.addEventListener("load",(displayBooks()));
+
+//Show modal form to input new data for new book to be added
+addBookBtn.addEventListener('click', function(){
+    modal.style.display="block";
+})
+
+//Close modal form
+span.onclick = function() {
+    modal.style.display = "none";
+    document.getElementById("modal-content").reset();
+}
+
+//When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      document.getElementById("modal-content").reset();
+
+    }
+  }
