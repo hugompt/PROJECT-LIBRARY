@@ -43,6 +43,33 @@ body{
     margin: 50px;
 }
 
+table, th, td {
+
+    padding: 10px;
+    
+  }
+
+  table{
+
+
+  }
+  
+  th{
+      background-color: var(--yellow);
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 900;
+      font-family: 'Hurricane', cursive, sans-serif;
+      text-shadow: 1px 1px var(--green);
+   
+
+  }
+
+input{
+    background-color: var(--white);
+    border: 0;
+    border-bottom: 2px dotted var(--green);
+}
 /* Footer code below */
 .footer{
     font-family: Verdana, Geneva, Tahoma, sans-serif;

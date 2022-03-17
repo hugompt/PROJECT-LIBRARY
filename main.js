@@ -16,6 +16,12 @@ function Book (title, author, pages){
 
 //Function to add a new book into the user's library
 function addBookToLibrary(book){
+    let tbodyRef = document.getElementById('booksTable').getElementsByTagName('tbody')[0];
+    let newRow = tbodyRef.insertRow();
+    newRow.insertCell().appendChild(document.createTextNode(book.title));
+    newRow.insertCell().appendChild(document.createTextNode(book.author));
+    newRow.insertCell().appendChild(document.createTextNode(book.pages));
+
     book.printBook();
     myLibrary.push(book);
     console.log(myLibrary);
