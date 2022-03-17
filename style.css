@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hurricane&display=swap');
+
 :root {
     --grey: #394a51;
     --green: #7fa99b;
@@ -12,14 +14,34 @@
     -webkit-appearance: none;
     /* outline: 1px solid red; */
     list-style: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     box-sizing: border-box;
     outline: none;
 }
 
+body{
+    background-color: var(--white);
+}
 
+/* Header code below */
+.header{
+    height: 80px;
+    background-color: var(--yellow);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 50px;
+    font-family: 'Hurricane', cursive, sans-serif;
+    text-shadow: 2px 2px var(--green);
+    padding: 10px;
+    box-shadow: 0 5px 5px var(--yellow);
+}
 
-
+/* Main code below */
+.main{
+    margin: 50px;
+}
 
 /* Footer code below */
 .footer{

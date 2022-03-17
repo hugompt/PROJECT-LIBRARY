@@ -1,6 +1,5 @@
 //Global variables
 let myLibrary = [];
-
 let saveBtn = document.querySelector('#save');
 
 //Object Constructor for a Book
@@ -14,12 +13,14 @@ function Book (title, author, pages){
     }
 }
 
+
 //Function to add a new book into the user's library
 function addBookToLibrary(book){
     book.printBook();
     myLibrary.push(book);
     console.log(myLibrary);
 }
+
 
 //Listen in for click on the save button and call function
 //to add the new book onto the user's library
@@ -36,10 +37,25 @@ saveBtn.addEventListener('click', function(){
             alert("Book already exists, no need to add it again.");
         }
         else{
+            //Add the new book
             addBookToLibrary(newBook);
+            //Show the new added book
+            displayBooks();
         }
     }
     else{
         alert("Please enter a valid input...")
     }
 });
+
+
+//Function to display current books stored in the library
+function displayBooks(){
+    //Loop trought all the array to individually display each book
+    for(i=0; i <= myLibrary.length; i++){
+        
+    }
+}
+
+//When the page loads, display current books
+document.addEventListener("load",(displayBooks()));
