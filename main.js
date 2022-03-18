@@ -99,7 +99,8 @@ $('table').on('click', 'input[type="button"]', function(e){
 
 //When the page loads, display current books
 window.addEventListener("load", function(){
-    myLibrary = JSON.parse(localStorage.getArray('Books'));
+    myLibrary = localStorage.getArray('Books');
+    console.log(myLibrary);
     displayBooks()
 });
 
