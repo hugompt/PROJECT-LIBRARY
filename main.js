@@ -48,7 +48,7 @@ saveBtn.addEventListener('click', function(){
         else{
             //Add the new book
             addBookToLibrary(newBook);
-            
+            localStorage.pushArrayItem("Books", newBook);
             //Reset modal form fields and hide the form
             document.getElementById("modal-content").reset();
             modal.style.display = "none";
@@ -66,12 +66,13 @@ saveBtn.addEventListener('click', function(){
 //Function to display current books stored in the library
 function displayBooks(){
     //Loop trought all the array to individually display each book
-    if(myLibrary.length > 0){
+    if(myLibrary.length != null){
         $("tbody").children().remove()
 
         let tbodyRef = document.getElementById('booksTable').getElementsByTagName('tbody')[0];
         for(i=0; i <= (myLibrary.length-1); i++){
             let newRow = tbodyRef.insertRow();
+            newRow.id = "row_" + i;
             newDelete = document.createElement('div');
             newDelete.classList = 'delete';
             newCheckBox = document.createElement('input');
@@ -92,8 +93,15 @@ function displayBooks(){
     }
 }
 
+$('table').on('click', 'input[type="button"]', function(e){
+    $(this).closest('tr').remove()
+ })
+
 //When the page loads, display current books
-document.addEventListener("load",(displayBooks()));
+window.addEventListener("load", function(){
+    myLibrary = JSON.parse(localStorage.getArray('Books'));
+    displayBooks()
+});
 
 //Show modal form to input new data for new book to be added
 addBookBtn.addEventListener('click', function(){
@@ -119,3 +127,50 @@ function hideModal() {
    modal.style.display = "none";
    document.getElementById("modal-content").reset();
 }
+
+
+//Local storage
+Storage.prototype.getArray = function(arrayName) {
+    var thisArray = [];
+    var fetchArrayObject = this.getItem(arrayName);
+    if (typeof fetchArrayObject !== 'undefined') {
+      if (fetchArrayObject !== null) { thisArray = JSON.parse(fetchArrayObject); }
+    }
+    return thisArray;
+  }
+  
+  Storage.prototype.pushArrayItem = function(arrayName,arrayItem) {
+    var existingArray = this.getArray(arrayName);
+    existingArray.push(arrayItem);
+    this.setItem(arrayName,JSON.stringify(existingArray));
+  }
+  
+  Storage.prototype.popArrayItem = function(arrayName) {
+    var arrayItem = {};
+    var existingArray = this.getArray(arrayName);
+    if (existingArray.length > 0) {
+      arrayItem = existingArray.pop();
+      this.setItem(arrayName,JSON.stringify(existingArray));
+    }
+    return arrayItem;
+  }
+  
+  Storage.prototype.shiftArrayItem = function(arrayName) {
+    var arrayItem = {};
+    var existingArray = this.getArray(arrayName);
+    if (existingArray.length > 0) {
+      arrayItem = existingArray.shift();
+      this.setItem(arrayName,JSON.stringify(existingArray));
+    }
+    return arrayItem;
+  }
+  
+  Storage.prototype.unshiftArrayItem = function(arrayName,arrayItem) {
+    var existingArray = this.getArray(arrayName);
+    existingArray.unshift(arrayItem);
+    this.setItem(arrayName,JSON.stringify(existingArray));
+  }
+  
+  Storage.prototype.deleteArray = function(arrayName) {
+    this.removeItem(arrayName);
+  }
