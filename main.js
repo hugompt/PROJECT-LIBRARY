@@ -1,6 +1,7 @@
 //Global variables
 let myLibrary = [];
 let saveBtn = document.querySelector('#add-book');
+let deleteBtn = document.querySelector('#rowDelete');
 let modal = document.getElementById('modal');
 let addBookBtn = document.querySelector('.addBook');
 let span = document.getElementsByClassName('close')[0];
@@ -9,6 +10,7 @@ let confirmDelete = document.getElementById('dialog');
 var modalDelete = document.querySelector(".modalDelete");
 let newCheckBox;
 let newDelete;
+let auxDelete;
 
 //Object Constructor for a Book
 function Book (title, author, pages, read){
@@ -22,6 +24,71 @@ function Book (title, author, pages, read){
     }
 }
 
+
+//When the page loads, display current books
+window.addEventListener("load", function(){
+    myLibrary = localStorage.getArray('Books');
+    console.log(myLibrary);
+    displayBooks()
+});
+
+
+//Function to display current books stored in the library
+function displayBooks(){
+    //Loop trought all the array to individually display each book
+    if(myLibrary.length != null){
+        $("tbody").children().remove()
+
+        let tbodyRef = document.getElementById('booksTable').getElementsByTagName('tbody')[0];
+        for(i=0; i <= (myLibrary.length - 1); i++){
+            let newRow = tbodyRef.insertRow();
+            newRow.id = "row_" + i;
+            newDelete = document.createElement('div');
+            newDelete.classList = 'delete';
+            newCheckBox = document.createElement('input');
+            newCheckBox.type = 'checkbox';
+            newCheckBox.checked = myLibrary[i].read;
+            newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].title));
+            newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].author));
+            newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].pages));
+            newRow.insertCell().appendChild(newCheckBox);
+            newRow.insertCell().appendChild(newDelete);
+            deleteRow = document.querySelectorAll('.delete');
+            for (let i = 0; i < deleteRow.length; i++) {
+                deleteRow[i].addEventListener('click', function() {
+                    modalDelete.style.display = "block";
+                    auxDelete = i
+                });
+            }
+        }
+    }
+}
+
+
+//Show modal form to input new data for new book to be added
+addBookBtn.addEventListener('click', function(){
+    modal.style.display="block";
+})
+
+//Close modal form
+span.onclick = function() {
+    modal.style.display = "none";
+    document.getElementById("modal-content").reset();
+}
+
+//When the user clicks anywhere outside of a modal, close it
+window.onclick = function(event) {
+    if (event.target == modal || event.target == modalDelete) {    
+      hideModal();
+    }
+  }
+
+//Function to hide modals and reset inputs
+function hideModal() {
+   modalDelete.style.display = "none";
+   modal.style.display = "none";
+   document.getElementById("modal-content").reset();
+}
 
 //Function to add a new book into the user's library
 //and respective table to display the books
@@ -49,6 +116,7 @@ saveBtn.addEventListener('click', function(){
             //Add the new book
             addBookToLibrary(newBook);
             localStorage.pushArrayItem("Books", newBook);
+
             //Reset modal form fields and hide the form
             document.getElementById("modal-content").reset();
             modal.style.display = "none";
@@ -63,71 +131,23 @@ saveBtn.addEventListener('click', function(){
 });
 
 
-//Function to display current books stored in the library
-function displayBooks(){
-    //Loop trought all the array to individually display each book
-    if(myLibrary.length != null){
-        $("tbody").children().remove()
+//Delete row event
+deleteBtn.addEventListener('click', function(){
+    //Remove book from the array
+    myLibrary.splice(auxDelete,1);
 
-        let tbodyRef = document.getElementById('booksTable').getElementsByTagName('tbody')[0];
-        for(i=0; i <= (myLibrary.length-1); i++){
-            let newRow = tbodyRef.insertRow();
-            newRow.id = "row_" + i;
-            newDelete = document.createElement('div');
-            newDelete.classList = 'delete';
-            newCheckBox = document.createElement('input');
-            newCheckBox.type = 'checkbox';
-            newCheckBox.checked = myLibrary[i].read;
-            newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].title));
-            newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].author));
-            newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].pages));
-            newRow.insertCell().appendChild(newCheckBox);
-            newRow.insertCell().appendChild(newDelete);
-            deleteRow = document.querySelectorAll('.delete');
-            for (let i = 0; i < deleteRow.length; i++) {
-                deleteRow[i].addEventListener('click', function() {
-                    modalDelete.style.display = "block";
-                });
-            }
-        }
+    //Delete the whole localstorage
+    localStorage.deleteArray("Books");
+
+    //Add the new array back onto the localstorage
+    for (let i = 0; i < myLibrary.length; i++)
+    {
+        localStorage.pushArrayItem("Books", myLibrary[i]);
     }
-}
 
-$('table').on('click', 'input[type="button"]', function(e){
-    $(this).closest('tr').remove()
- })
-
-//When the page loads, display current books
-window.addEventListener("load", function(){
-    myLibrary = localStorage.getArray('Books');
-    console.log(myLibrary);
-    displayBooks()
-});
-
-//Show modal form to input new data for new book to be added
-addBookBtn.addEventListener('click', function(){
-    modal.style.display="block";
+    //Display the books back onto the main table
+    displayBooks();
 })
-
-//Close modal form
-span.onclick = function() {
-    modal.style.display = "none";
-    document.getElementById("modal-content").reset();
-}
-
-//When the user clicks anywhere outside of a modal, close it
-window.onclick = function(event) {
-    if (event.target == modal || event.target == modalDelete) {    
-      hideModal();
-    }
-  }
-
-//Function to hide modals and reset inputs
-function hideModal() {
-   modalDelete.style.display = "none";
-   modal.style.display = "none";
-   document.getElementById("modal-content").reset();
-}
 
 
 //Local storage
