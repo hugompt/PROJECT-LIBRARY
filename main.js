@@ -2,6 +2,7 @@
 let myLibrary = [];
 let saveBtn = document.querySelector('#add-book');
 let deleteBtn = document.querySelector('#rowDelete');
+let checkboxes = document.querySelectorAll('input[type="checkbox"]');
 let modal = document.getElementById('modal');
 let addBookBtn = document.querySelector('.addBook');
 let span = document.getElementsByClassName('close')[0];
@@ -47,6 +48,7 @@ function displayBooks(){
             newDelete.classList = 'delete';
             newCheckBox = document.createElement('input');
             newCheckBox.type = 'checkbox';
+            newCheckBox.id = 'chk_' + i;
             newCheckBox.checked = myLibrary[i].read;
             newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].title));
             newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].author));
