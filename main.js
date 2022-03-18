@@ -26,11 +26,14 @@ function addBookToLibrary(book){
     let newCheckBox = document.createElement('input');
     newCheckBox.type = 'checkbox';
     newCheckBox.checked = book.read;
+    let newDelete = document.createElement('div');
+    newDelete.classList = 'delete';
 
     newRow.insertCell().appendChild(document.createTextNode(book.title));
     newRow.insertCell().appendChild(document.createTextNode(book.author));
     newRow.insertCell().appendChild(document.createTextNode(book.pages));
     newRow.insertCell().appendChild(newCheckBox);
+    newRow.insertCell().appendChild(newDelete);
 }
 
 

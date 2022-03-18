@@ -93,6 +93,10 @@ td{
     font-family: var(--regFont);
 }
 
+td:hover{
+    background-color: #a4d3c3;;
+}
+
 input{
     background-color: var(--white);
     border: 0;
@@ -102,6 +106,16 @@ input{
 }
 
 input:hover{
+    cursor: pointer;
+}
+
+.delete{
+    background: url('./imgs/delete.svg') no-repeat center center;
+    height: 1.3rem;
+    padding: 0;
+}
+
+.delete:hover{
     cursor: pointer;
 }
 
