@@ -6,10 +6,11 @@ let addBookBtn = document.querySelector('.addBook');
 let span = document.getElementsByClassName('close')[0];
 
 //Object Constructor for a Book
-function Book (title, author, pages){
+function Book (title, author, pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
 
     this.printBook = function(){
         console.log(this);
@@ -22,18 +23,14 @@ function Book (title, author, pages){
 function addBookToLibrary(book){
     let tbodyRef = document.getElementById('booksTable').getElementsByTagName('tbody')[0];
     let newRow = tbodyRef.insertRow();
-    
-    var checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = 'car';
-    checkbox.name = 'interest';
-    checkbox.value = 'car';
+    let newCheckBox = document.createElement('input');
+    newCheckBox.type = 'checkbox';
+    newCheckBox.checked = book.read;
 
     newRow.insertCell().appendChild(document.createTextNode(book.title));
     newRow.insertCell().appendChild(document.createTextNode(book.author));
     newRow.insertCell().appendChild(document.createTextNode(book.pages));
-    newRow.insertCell().appendChild(checkbox);
-    myLibrary.push(book);
+    newRow.insertCell().appendChild(newCheckBox);
 }
 
 
@@ -43,7 +40,8 @@ saveBtn.addEventListener('click', function(){
     let newTitle = document.getElementById('title').value;
     let newAuthor = document.getElementById('name').value;
     let newPages = document.getElementById('number').value;
-    let newBook = new Book(newTitle, newAuthor, newPages)
+    let newRead = document.getElementById('checkbox').checked;
+    let newBook = new Book(newTitle, newAuthor, newPages, newRead);
 
     //Check if string is just empty spaces before adding
     if(newTitle.trim() != "" && newAuthor.trim() != "" && newPages.trim() != ""){

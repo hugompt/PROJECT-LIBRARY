@@ -82,6 +82,7 @@ th{
     width: 50rem;
     height: 5rem;
     font-size: 2.5rem;
+    user-select: none;
 }
 
 td{
@@ -96,6 +97,12 @@ input{
     background-color: var(--white);
     border: 0;
     border-bottom: 2px dotted var(--green);
+    appearance:auto;
+    -webkit-appearance: auto;
+}
+
+input:hover{
+    cursor: pointer;
 }
 
 /* Add a new book modal form code below */
@@ -103,7 +110,7 @@ input{
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 70px;
     left: 0;
     top: 0;
     width: 100%; 
@@ -278,7 +285,7 @@ input{
     background-color: var(--green);
     color: white;
     padding: 10px;
-    position: relative;
+    position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
