@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" type="image/jpg" href="./imgs/favicon-16x16.png">
     <script src="https://kit.fontawesome.com/265f5fda5f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./main.js" defer></script>
     <title>Library 2.0</title>
 </head>
@@ -82,6 +83,15 @@
                 </div>
             </form>
         </div>
+        <div class="modalDelete">
+            <div class="modalDeleteContent">
+                <p>Are you sure you want to delete this book?</p>
+                <br>
+                <button class="del" onclick="hideModal()">Yes, delete book</button>
+                <button class="cancel" onclick="hideModal()">Cancel</button>
+            </div>
+        </div>
+
     </div>
     <div class="footer">
         &copy Hugo Marinho 2022      
