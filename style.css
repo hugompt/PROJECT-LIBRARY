@@ -60,9 +60,28 @@ body{
 
 }
 
+/* Title code below */
+
+.titleMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-transform: uppercase;
+    font-family:'Hurricane', cursive, sans-serif;
+    font-size: 2rem;
+    user-select: none;
+    text-shadow: 2px 2px var(--green);;
+    color: black;
+    font-weight: bolder;
+    background: rgb(253,197,123);
+background: radial-gradient(circle, rgba(253,197,123,1) 0%, rgba(225,191,130,1) 16%, rgba(127,169,155,1) 100%);
+}
+
 /* Main code below */
 .main{
     margin: 50px;
+    margin-top: 0;
     display: flex;
     justify-content: center;
 }
