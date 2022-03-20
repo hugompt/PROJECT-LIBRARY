@@ -28,14 +28,13 @@ function Book (title, author, pages, read){
 
 //When the page loads, display current books
 window.addEventListener("load", function(){
-    myLibrary = localStorage.getArray('Books');
-    console.log(myLibrary);
     displayBooks()
 });
 
 
 //Function to display current books stored in the library
 function displayBooks(){
+    myLibrary = localStorage.getArray('Books');
     //Loop trought all the array to individually display each book
     if(myLibrary.length != null){
         $("tbody").children().remove()
@@ -69,6 +68,7 @@ function displayBooks(){
 
 //Show modal form to input new data for new book to be added
 addBookBtn.addEventListener('click', function(){
+    modal.style.transition = "transform .3s";
     modal.style.display="block";
 })
 
@@ -128,9 +128,36 @@ saveBtn.addEventListener('click', function(){
         }
     }
     else{
-        alert("Please enter a valid input...")
+        if(newTitle.trim() == ""){
+            document.getElementById('validationTitle').style.visibility =  "visible";
+        }
+        if(newAuthor.trim() == ""){
+            document.getElementById('validationAuthor').style.visibility =  "visible";
+        }
+        if(newPages.trim() == ""){
+            document.getElementById('validationPages').style.visibility =  "visible";
+        }
     }
 });
+
+
+//Keeps placeholder text small if input fields are invalid
+document.getElementById('validationTitle').addEventListener('visibilitychange', event => {
+    document.getElementById('lblTitle').style.transform = "scale(0.7) translateY(-40px)";
+});
+document.getElementById('validationAuthor').addEventListener('visibilitychange', event => { 
+    document.getElementById('lblAuthor').style.transform = "scale(0.7) translateY(-40px)";
+
+});
+document.getElementById('validationPages').addEventListener('visibilitychange', event => { 
+    document.getElementById('lblPages').style.transform = "scale(0.7) translateY(-40px)";
+});
+
+function validate() {
+    var element = document.getElementById('name');
+    element.value = element.value.replace(/[^a-zA-Z@]+/, '');
+  };
+
 
 
 //Delete row event

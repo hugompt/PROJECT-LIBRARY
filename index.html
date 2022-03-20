@@ -46,25 +46,25 @@
                 <div class="auxCont">
                     <div class="input-block">
                         <input id="title" type="text" name="title" autocomplete="off" required="">
-                        <span class="placeholder">Title of the book? (*)</span>
-                        <div class="validation-block">
+                        <span class="placeholder" id="lblTitle">Title of the book? (*)</span>
+                        <div class="validation-block" id="validationTitle">
                             <p class="validation-text title">Please fill out this field.</p>
                         </div>
                     </div>
             
                     <div class="input-block">
-                        <input id="name" type="text" name="name" autocomplete="off" required="">
-                        <span class="placeholder">Author of the book? (*)</span>
-                        <div class="validation-block">
+                        <input id="name" type="text" name="name" autocomplete="off" required="" pattern="[a-zA-Z\s]+" onkeyup="validate();">
+                        <span class="placeholder" id="lblAuthor" >Author of the book? (*)</span>
+                        <div class="validation-block" id="validationAuthor">
                             <p class="validation-text name">Please fill out this field.</p>
                         </div>
                     </div>
             
                     <div class="input-block">
                         <input id="number" type="number" name="number" autocomplete="off" required="">
-                        <span class="placeholder">Number of pages (*)</span>
-                        <div class="validation-block">
-                            <p class="validation-text number">Please enter a number bigger than 0.</p>
+                        <span class="placeholder" id="lblPages">Number of pages (*)</span>
+                        <div class="validation-block" id="validationPages">
+                            <p class="validation-text number">Please enter a valid number.</p>
                         </div>
                     </div>
             
