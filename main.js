@@ -68,7 +68,6 @@ function displayBooks(){
 
 //Show modal form to input new data for new book to be added
 addBookBtn.addEventListener('click', function(){
-    modal.style.transition = "transform .3s";
     modal.style.display="block";
 })
 
@@ -121,6 +120,9 @@ saveBtn.addEventListener('click', function(){
 
             //Reset modal form fields and hide the form
             document.getElementById("modal-content").reset();
+            document.getElementById('validationTitle').style.visibility =  "hidden";
+            document.getElementById('validationAuthor').style.visibility =  "hidden";
+            document.getElementById('validationPages').style.visibility =  "hidden";
             modal.style.display = "none";
 
             //Show the new added book
