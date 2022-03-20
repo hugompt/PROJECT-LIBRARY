@@ -7,8 +7,9 @@ let modal = document.getElementById('modal');
 let addBookBtn = document.querySelector('.addBook');
 let span = document.getElementsByClassName('close')[0];
 let deleteRow = document.querySelectorAll('.delete');
+let checkChange = document.querySelectorAll('.checkboxClass');
 let confirmDelete = document.getElementById('dialog');
-var modalDelete = document.querySelector(".modalDelete");
+let modalDelete = document.querySelector(".modalDelete");
 let newCheckBox;
 let newDelete;
 let auxDelete;
@@ -47,6 +48,7 @@ function displayBooks(){
             newDelete.classList = 'delete';
             newCheckBox = document.createElement('input');
             newCheckBox.type = 'checkbox';
+            newCheckBox.classList = 'checkboxClass';
             newCheckBox.id = 'chk_' + i;
             newCheckBox.checked = myLibrary[i].read;
             newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].title));
@@ -54,11 +56,23 @@ function displayBooks(){
             newRow.insertCell().appendChild(document.createTextNode(myLibrary[i].pages));
             newRow.insertCell().appendChild(newCheckBox);
             newRow.insertCell().appendChild(newDelete);
+
             deleteRow = document.querySelectorAll('.delete');
             for (let i = 0; i < deleteRow.length; i++) {
                 deleteRow[i].addEventListener('click', function() {
                     modalDelete.style.display = "block";
                     auxDelete = i
+                });
+            }
+
+            checkChange = document.querySelectorAll('.checkboxClass');
+            for (let i = 0; i < checkChange.length; i++) {
+                checkChange[i].addEventListener('change', function() {
+                    myLibrary[i].read = checkChange[i].checked;
+
+// NEEDS TO BE CHECKED; NOT WORKING!
+                    localStorage.deleteArray('Books');
+                    localStorage.pushArrayItem('Books', myLibrary[i]);
                 });
             }
         }
@@ -95,6 +109,7 @@ function hideModal() {
 //and respective table to display the books
 function addBookToLibrary(book){
     myLibrary.push(book);
+    localStorage.pushArrayItem("Books", book);
 }
 
 
@@ -116,7 +131,6 @@ saveBtn.addEventListener('click', function(){
         else{
             //Add the new book
             addBookToLibrary(newBook);
-            localStorage.pushArrayItem("Books", newBook);
 
             //Reset modal form fields and hide the form
             document.getElementById("modal-content").reset();
@@ -132,12 +146,18 @@ saveBtn.addEventListener('click', function(){
     else{
         if(newTitle.trim() == ""){
             document.getElementById('validationTitle').style.visibility =  "visible";
+        }else{
+            document.getElementById('validationTitle').style.visibility =  "hidden";
         }
         if(newAuthor.trim() == ""){
             document.getElementById('validationAuthor').style.visibility =  "visible";
+        }else{
+            document.getElementById('validationAuthor').style.visibility =  "hidden";
         }
         if(newPages.trim() == ""){
             document.getElementById('validationPages').style.visibility =  "visible";
+        }else{
+            document.getElementById('validationPages').style.visibility =  "hidden";
         }
     }
 });
