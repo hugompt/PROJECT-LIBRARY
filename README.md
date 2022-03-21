@@ -1,3 +1,3 @@
 # PROJECT-LIBRARY
 
-🚧 WORK IN PROGRESS 🚧
+[LIVE DEMO](https://hugompt.github.io/PROJECT-LIBRARY/)
