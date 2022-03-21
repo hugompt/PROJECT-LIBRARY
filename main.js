@@ -69,10 +69,6 @@ function displayBooks(){
             for (let i = 0; i < checkChange.length; i++) {
                 checkChange[i].addEventListener('change', function() {
                     myLibrary[i].read = checkChange[i].checked;
-
-// NEEDS TO BE CHECKED; NOT WORKING!
-                    localStorage.deleteArray('Books');
-                    localStorage.pushArrayItem('Books', myLibrary[i]);
                 });
             }
         }
