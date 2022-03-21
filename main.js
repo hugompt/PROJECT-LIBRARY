@@ -173,7 +173,7 @@ document.getElementById('validationPages').addEventListener('visibilitychange', 
 
 function validate() {
     var element = document.getElementById('name');
-    element.value = element.value.replace(/[^a-zA-Z@]+/, '');
+    element.value = element.value.replace(/[^a-zA-Z ]+/, '');
   };
 
 
